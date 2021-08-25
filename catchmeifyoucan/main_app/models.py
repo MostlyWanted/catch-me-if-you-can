@@ -21,7 +21,10 @@ class Game(models.Model):
     number_of_lvls = models.IntegerField(max_length=200)
 
 #  ice box BUT SHOULD REALLY DOOOOOOO1!!!
-# class Hints(models.Model):
-#     hint1 = models.CharField(max_length=200)
-#     hint2 = models.CharField(max_length=200)
-#     hint3 = models.CharField(max_length=200)
+class Hints(models.Model):
+    # hints should be able to pull in data from the country data api
+    # ex. a hint could say the countries name ends with the letter 'a'
+    hint1 = models.CharField(max_length=200)
+    hint2 = models.CharField(max_length=200)
+    hint3 = models.CharField(max_length=200)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE)
