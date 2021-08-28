@@ -1,4 +1,5 @@
 from django.contrib import admin
+<<<<<<< HEAD
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
 
@@ -25,3 +26,13 @@ class UserAdmin(BaseUserAdmin):
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
+=======
+from .models import User, Location, Game
+
+# Register your models here.
+admin.site.register(User)
+
+admin.site.register(Location)
+
+admin.site.register(Game)
+>>>>>>> 5e398e50b2ffbe8616ffe9a0d6a0c626c9549202
