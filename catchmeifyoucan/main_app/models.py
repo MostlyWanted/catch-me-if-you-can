@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.fields import IntegerField
+from django.db.models.fields.related import OneToOneField
 
 
 # Create your models here.
@@ -27,3 +29,8 @@ class Game(models.Model):
 #     hint1 = models.CharField(max_length=200)
 #     hint2 = models.CharField(max_length=200)
 #     hint3 = models.CharField(max_length=200)
+
+
+class Gamer(models.Model):
+    user = OneToOneField(User, on_delete=models.CASCADE)
+    account = models.IntegerField
