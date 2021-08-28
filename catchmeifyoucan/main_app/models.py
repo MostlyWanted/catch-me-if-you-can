@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 
@@ -18,7 +20,7 @@ class User(models.Model):
 
 class Game(models.Model):
     name = models.CharField(max_length=200)
-    number_of_lvls = models.IntegerField(max_length=200)
+    number_of_lvls = models.IntegerField
 
 #  ice box BUT SHOULD REALLY DOOOOOOO1!!!
 # class Hints(models.Model):
