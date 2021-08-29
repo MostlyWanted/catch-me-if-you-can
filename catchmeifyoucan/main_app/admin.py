@@ -1,5 +1,5 @@
-from .models import User, Location, Game
-from my_user_profile_app.models import Gamer
+from .models import User, Location, Game, Gamer
+# from my_user_profile_app.models import Gamer
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib import admin
@@ -26,7 +26,7 @@ class UserAdmin(BaseUserAdmin):
 
 
 admin.site.unregister(User)
-admin.site.register(User, UserAdmin)
+# admin.site.register(User, UserAdmin)
 
 # Register your models here.
 admin.site.register(User)
