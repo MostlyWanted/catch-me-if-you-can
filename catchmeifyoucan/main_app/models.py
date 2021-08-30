@@ -22,7 +22,8 @@ class User(models.Model):
 
 class Game(models.Model):
     name = models.CharField(max_length=200)
-    number_of_lvls = models.IntegerField
+    number_of_lvls = models.IntegerField(default=0)
+    description = models.TextField(max_length=200)
 
 #  ice box BUT SHOULD REALLY DOOOOOOO1!!!
 # class Hints(models.Model):
@@ -33,4 +34,4 @@ class Game(models.Model):
 
 class Gamer(models.Model):
     user = OneToOneField(User, on_delete=models.CASCADE)
-    account = models.IntegerField
+    account = models.IntegerField()

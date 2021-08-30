@@ -4,6 +4,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import Game
 
 
 def home(request):
@@ -12,7 +13,15 @@ def home(request):
 
 @login_required
 def games(request):
-    return HttpResponse(' Hello these are all the games available to play')
+    games = Game.objects.all()
+    return render(request, 'games/home.html/', {'games': games})
+    # return render('games/home.html/')
+
+
+@login_required
+def game_details(request, game_id):
+    game = Game.objects.get(id=game_id)
+    return render(request, 'games/details.html/', {'game': game})
 
 
 def signup(request):
