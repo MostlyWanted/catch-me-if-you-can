@@ -4,7 +4,7 @@
 
 {% for game in games %}
 
-    <a href="{% url 'index' game.id %}">
+    <a href="{% url 'game_details' game.id %}">
       <div class="card-content">
         <span class="card-title">{{ game.name }}</span>
         <p>game: {{game.number_of_lvls}}</p>
