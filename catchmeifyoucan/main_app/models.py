@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.fields import IntegerField
 from django.db.models.fields.related import OneToOneField
-
+from django.urls import reverse
 
 # Create your models here.
 
@@ -24,6 +24,9 @@ class Game(models.Model):
     name = models.CharField(max_length=200)
     number_of_lvls = models.IntegerField(default=0)
     description = models.TextField(max_length=200)
+
+    def get_absolut_url(self):
+        return reverse('detail', kwargs={'game_id': self.id})
 
 #  ice box BUT SHOULD REALLY DOOOOOOO1!!!
 # class Hints(models.Model):

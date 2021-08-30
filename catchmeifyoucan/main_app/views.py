@@ -4,11 +4,21 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import CreateView
+
 from .models import Game
 
 
 def home(request):
     return HttpResponse('< h1 > hello this is our game < /h1 > ')
+
+
+class GameCreate(CreateView):
+    model = Game
+    fields = '__all__'
+    last_record = Game.objects.all().count() + 1
+    success_url = f'/games/{last_record}/'
+    # success_url = '/games/'
 
 
 @login_required
