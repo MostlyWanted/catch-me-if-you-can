@@ -5,21 +5,33 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-
-from .models import Game
+from .models import Game, Location
+from .forms import LocationForm
 
 
 def home(request):
     return HttpResponse('< h1 > hello this is our game < /h1 > ')
 
 
+
 class GameCreate(CreateView):
     model = Game
-    fields = '__all__'
+    fields = ['name','number_of_lvls','description']
     last_record = Game.objects.all().count() + 1
     success_url = f'/games/{last_record}/'
     # success_url = '/games/'
 
+
+class LocationCreate(CreateView):
+    model = Location
+    fields = '__all__'
+    # last_record = Location.objects.all().count() + 1
+    # success_url = f'/games/{last_record}/'
+    # success_url =  f'/games/{last_record}/'
+
+def assoc_location(request, game_id, location_id):
+    Game.objects.get(id=game_id).location.add(location_id)
+    return redirect('game_details', game_id=game_id)
 
 @login_required
 def games(request):
@@ -31,7 +43,9 @@ def games(request):
 @login_required
 def game_details(request, game_id):
     game = Game.objects.get(id=game_id)
-    return render(request, 'games/details.html/', {'game': game})
+    locationsOptions = Location.objects.all()
+    location_form = LocationForm()
+    return render(request, 'games/details.html/', {'game': game, 'location_form': location_form, 'locations': locationsOptions})
 
 
 def signup(request):
@@ -62,4 +76,13 @@ class GameUpdate(UpdateView):
 
 class GameDelete(DeleteView):
     model = Game
+    success_url = '/games/'
+
+class LocationUpdate(UpdateView):
+    model = Location
+    fields = '__all__'
+    success_url = '/games/'
+
+class LocationDelete(DeleteView):
+    model = Location
     success_url = '/games/'
