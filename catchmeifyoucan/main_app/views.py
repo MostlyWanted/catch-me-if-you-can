@@ -4,7 +4,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .models import Game
 
@@ -52,3 +52,14 @@ def signup(request):
     form = UserCreationForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
+
+
+class GameUpdate(UpdateView):
+    model = Game
+    fields = '__all__'
+    success_url = '/games/'
+
+
+class GameDelete(DeleteView):
+    model = Game
+    success_url = '/games/'
