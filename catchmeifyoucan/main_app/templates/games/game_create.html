@@ -13,12 +13,9 @@
   <input type="text" name="description" />
   <label for="">Add a Location for Frank to your Game: </label>
   <select name="locations" id=""> -->
-    {% for location in locations %}
-    <option value="{{ location.location_name }}">
-      {{ location.location_name }}
-    </option>
-    {% endfor %}
-  </select>
+  <table>
+    {{ form.as_table }}
+  </table>
 
   <input type="submit" value="submit!" class="btn" />
 </form>

@@ -7,9 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Game, Location
 from .forms import LocationForm, GameForm
-import logging
 
-logger = logging.getLogger('__name__')
 
 
 def home(request):
@@ -25,6 +23,7 @@ class GameCreate(CreateView):
     # success_url = '/games/'
 
 def games_create(request):
+    error_message = ''
     if request.method == 'POST':
         form = GameForm(request.POST)
         if form.is_valid():

@@ -25,6 +25,9 @@ class Location(models.Model):
     map_Cord_X = models.FloatField()
     map_Cord_Y = models.FloatField()
 
+    def __str__(self):
+        return f'{self.location_name}'
+
 class Game(models.Model):
     name = models.CharField(max_length=200)
     number_of_lvls = models.IntegerField(default=0)
