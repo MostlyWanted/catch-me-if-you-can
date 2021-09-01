@@ -6,7 +6,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Game, Location
-from .forms import LocationForm
+from .forms import LocationForm, GameForm
+import logging
+
+logger = logging.getLogger('__name__')
 
 
 def home(request):
@@ -21,10 +24,27 @@ class GameCreate(CreateView):
     success_url = f'/games/{last_record}/'
     # success_url = '/games/'
 
-def game_create(request):
-    locations = Location.objects.all()
+def games_create(request):
+    if request.method == 'POST':
+        form = GameForm(request.POST)
+        if form.is_valid():
+            game = form.save()
+            return redirect('index')
+        else:
+            error_message = 'Error creating game'
+    
+    form = GameForm()
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'games/game_create.html', context)
+        # gm_name = request.body.name
+        # gm_lvls = request.body.number_of_lvls
+        # gm_description = request.body.description
+        # gm_locations = request.body.locations
+        # game = Game(name = gm_name, number_of_lvls = int(gm_lvls), description = gm_description, locations = gm_locations)
+        # game.save()
+    # locations = Location.objects.all()
     # see signup function for handling post
-    return render(request, )
+    # return render(request, 'games/game_create.html', {'locations': locations})
 
 
 class LocationCreate(CreateView):
