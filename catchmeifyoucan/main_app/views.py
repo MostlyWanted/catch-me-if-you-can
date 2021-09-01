@@ -21,6 +21,11 @@ class GameCreate(CreateView):
     success_url = f'/games/{last_record}/'
     # success_url = '/games/'
 
+def game_create(request):
+    locations = Location.objects.all()
+    # see signup function for handling post
+    return render(request, )
+
 
 class LocationCreate(CreateView):
     model = Location
