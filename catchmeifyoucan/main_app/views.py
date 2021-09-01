@@ -10,7 +10,7 @@ from .forms import LocationForm
 
 
 def home(request):
-    return HttpResponse('< h1 > hello this is our game < /h1 > ')
+    return render(request ,'maps.html')
 
 
 
