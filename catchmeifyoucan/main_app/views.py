@@ -29,8 +29,8 @@ class LocationCreate(CreateView):
     # success_url = f'/games/{last_record}/'
     # success_url =  f'/games/{last_record}/'
 
-def assoc_location(request, game_id, location_id):
-    Game.objects.get(id=game_id).location.add(location_id)
+def assoc_location(request, game_id, ignore_id, location_id):
+    Game.objects.get(id=game_id).locations.add(location_id)
     return redirect('game_details', game_id=game_id)
 
 @login_required
