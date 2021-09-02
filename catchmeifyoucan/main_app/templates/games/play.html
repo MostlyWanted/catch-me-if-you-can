@@ -12,44 +12,129 @@
 {{ game.locations.all }}
 
 <h3> all the locations:
-    {% for location in locations %}
-    {{ location.locations_name }}
-    {% endfor %}
+    
 </h3>
 
-{{ clues }}
+<h4>
+    Your Account Balance: $<span id="bank">500</span>
+</h4>
+
+<section id="choose">
+    
+    {% for key, value in clues.items %}
+    
+    <button>{{ key }}
+    </button>
+
+    
+    {% endfor %}
+    
+</section>
+
+<script>
+    let buttonLabel, noOfClicks;
+    
+    let clueVal = {};
+    let clues = {};  
+    let i = 0;
+
+    const cost = [100,
+        80,
+        75,
+        70,
+        65,
+        50,
+        20,
+        10  
+    ];
+
+</script>
+
 
 {% for key, value in clues.items %}
-{{key }}: {{ value }}
-{% endfor %}
-
-<script>
-    // const myEl = document.querySelector('input');
-    const gameId = '{{ game.id }}';
-    const clues = '{{ clues }}';
-    let myLocationName, myLocationId;
-
-    let locations = [];
-    let locationIds = [];
-
-    console.log(clues)
-</script>
-
-
-{% for location in game.locations.all %}
-<script>
-
-      myLocationName = '{{ location.location_name }}'
-      myLocationId = '{{ location.id }}'
-      
-      
-      locations.push(myLocationName);
-      locationIds.push(myLocationId);
     
-      console.log('{{location.location_name}}')
-      console.log(locations)
-      
-</script>
-{% endfor %}
-{% endblock %}
+    <script>
+        buttonLabel = '{{ key }}';
+        clueDesc = '{{ value }}';
 
+        console.log('btn label : ',buttonLabel)
+        console.log('clue: ', clueDesc)
+        console.log(i)
+
+        clueVal.clue = clueDesc;
+        clueVal.cost = cost[i];
+
+        clues[buttonLabel] = clueVal;
+     
+        i++;
+    </script>
+
+    
+{% endfor %}
+
+
+<script>
+    const load = () => {
+        
+        console.log('hi script is working');
+        
+        const myChoice = document.getElementById('choose');
+        const myBankEl = document.getElementById('bank');
+        
+        let bank = 500;
+        
+        console.log('choice is: ', myChoice)
+        console.log('choice is: ', myBankEl)
+
+        myChoice.addEventListener('click', mouseEvent => {
+            clickedOn = mouseEvent.target.innerText;
+
+            clickedOn.innerText = clues[clickedOn].clue
+            
+            bank = bank - clues[clickedOn].cost
+
+            console.log(clues)
+
+            render()
+        })
+
+    
+        function render() {
+            myBankEl.innerText = `${bank}`;
+            console.log(myBankEl)
+        }
+
+    }
+
+     
+    window.onload = load;
+
+    
+</script>
+
+
+
+<script>
+    
+        
+        let banks = 100;
+        
+        function deduct(mouseEvent){
+            banks = banks - 10
+            
+            noOfClicks++
+            
+            console.log(banks)
+            console.log(mouseEvent.target)
+            console.log(mouseEvent.target.innerText)
+            
+            render()
+        }
+        
+</script>
+
+<button onclick="deduct()">
+    push to loose money lol
+</button>
+
+{% endblock %}
