@@ -4,12 +4,17 @@
     <meta name="robots" content="index, all" />
     <script src="http://www.webglearth.com/v2/api.js"></script>
     <title>WebGL Earth API - Advanced API demo</title>
+    <style>
+      .cesium-credit-text {
+        color: var(--acc-prp-300);
+      }
+    </style>
     <script>
       var map;
       function init() {
         map = WE.map("map", {
           center: [36.057944835, -112.18688965],
-          zoom: 3,
+          zoom: 2.2,
           dragging: true,
           scrollWheelZoom: true,
         });
@@ -178,7 +183,7 @@
         right: 0;
         bottom: 0;
         left: 0;
-        background-color: #000;
+        background-color: var(--bgnd-dk-mtch);
         position: absolute !important;
       }
       #coords {
