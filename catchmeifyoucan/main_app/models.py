@@ -31,6 +31,9 @@ class Game(models.Model):
     description = models.TextField(max_length=200)
     locations = models.ManyToManyField(Location, null = True)
 
+    # def __str__(self):
+    #     return f'{self.name}'
+
 class User(models.Model):
     name = models.CharField(max_length=200)
     win_or_not = models.BooleanField()

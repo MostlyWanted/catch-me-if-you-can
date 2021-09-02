@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>
+    {{ game.name }}
+</h1>
+<h2> 
+    num of levels:{{ game.number_of_lvls }}
+</h2>
+
+{{ locations }}
+{{ game.locations.all }}
+
+<h3> all the locations:
+    {% for location in locations %}
+    {{ location.locations_name }}
+    {% endfor %}
+</h3>
+
+{{ clues }}
+
+{% for key, value in clues.items %}
+{{key }}: {{ value }}
+{% endfor %}
+
+<script>
+    // const myEl = document.querySelector('input');
+    const gameId = '{{ game.id }}';
+    const clues = '{{ clues }}';
+    let myLocationName, myLocationId;
+
+    let locations = [];
+    let locationIds = [];
+
+    console.log(clues)
+</script>
+
+
+{% for location in game.locations.all %}
+<script>
+
+      myLocationName = '{{ location.location_name }}'
+      myLocationId = '{{ location.id }}'
+      
+      
+      locations.push(myLocationName);
+      locationIds.push(myLocationId);
+    
+      console.log('{{location.location_name}}')
+      console.log(locations)
+      
+</script>
+{% endfor %}
+{% endblock %}
+

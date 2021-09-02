@@ -7,12 +7,33 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Game, Location
 from .forms import LocationForm
-
+import requests
 
 def home(request):
     return render(request ,'maps.html')
 
+@login_required
+def play(request, game_id):
+    game = Game.objects.get(id=game_id)
+    locations = game.locations.all()
 
+    response = requests.get('https://restcountries.eu/rest/v2/name/Canada?fullText=true')
+
+    clues = response.json()
+    clues = clues[0]
+
+    usr_clues = {}
+    usr_clues['capital'] = clues['capital']
+    usr_clues['borders'] = clues['borders']
+    usr_clues['currencies'] = clues['currencies'][0]['code']
+    # usr_clues['callingCodes'] = clues['callingCodes']
+    # usr_clues['subregion'] = clues['subregion']
+    # usr_clues['population'] = clues['population']
+    # usr_clues['timezones'] = clues['timezones']
+    # usr_clues['language'] = clues['language']
+    # usr_clues['topLevelDomain'] = clues['topLevelDomain'][0]
+    # usr_clues['area'] = clues['area']
+    return render(request, 'games/play.html', {'game': game, 'locations': locations, 'clues': usr_clues})
 
 class GameCreate(CreateView):
     model = Game

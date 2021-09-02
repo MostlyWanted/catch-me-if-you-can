@@ -1,6 +1,8 @@
+<ifram src = "main/mainpage.html"
 <!DOCTYPE HTML>
 <html>
   <head>
+    <a href="./games/">Go to games</a>
     <meta name="robots" content="index, all" />
     <script src="http://www.webglearth.com/v2/api.js"></script>
     <title>WebGL Earth API - Advanced API demo</title>
@@ -24,7 +26,7 @@
         });
     
 
-
+        
         var baselayer = WE.tileLayer('https://webglearth.github.io/webglearth2-offline/{z}/{x}/{y}.jpg', {
           tileSize: 256,
           bounds: [[-85, -180], [85, 180]],
@@ -46,7 +48,7 @@
           grandcanyon.setOpacity(e.target.value);
         });
         WE.marker([json.center[1], json.center[0]]).addTo(map);
-
+        
 
         //Print coordinates of the mouse
         map.on('mousemove', function(e) {
@@ -56,7 +58,7 @@
 
       function addSomeMarkers() {
         document.getElementById('addmarkers').disabled = true;
-
+        
         map.setView([51.505, 0], 5);
         var marker = WE.marker([51.5, -0.09]).addTo(map);
         marker.bindPopup("<b>Hello world!</b><br>I am a popup.<br /><span style='font-size:10px;color:#999'>Tip: Another popup is hidden in Cairo..</span>", {maxWidth: 150, closeButton: true}).openPopup();
@@ -72,7 +74,7 @@
           fillOpacity: 0.1,
           weight: 2
         }).addTo(map);
-
+        
         var anotherPolygon = function(e) {
           WE.polygon([[30, 30], [29, 31], [30, 32], [32, 32], [31, 30]], {
             color: '#000',
@@ -119,6 +121,7 @@
       #buttons {position: absolute; top:10px; left: 10px;}
       #layercontrol{position: absolute; top:10px; right: 10px;}
     </style>
+    
   </head>
   <body onload="init()">
     <div id="map"></div>

@@ -6,8 +6,11 @@
 <div class="card-content">
       <span class="card-title">{{ game.name }}</span>
       <h1>Description: {{ game.description }}</h1>
-      <button>Press to play</button>
-</div>
+      <a href="{% url 'play' game.id %}">
+
+            <button>Press to play</button>
+      </a>
+      </div>
 <div class = "card-action">
       <a href="{% url 'games_update' game.id %}" >Edit</a>
       <a href="{% url 'games_delete' game.id %}">Delete</a>
