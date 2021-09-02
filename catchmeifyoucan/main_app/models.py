@@ -3,15 +3,36 @@ from django.contrib.auth.models import User
 from django.db.models.fields import IntegerField
 from django.db.models.fields.related import OneToOneField
 from django.urls import reverse
-
+import requests
 # Create your models here.
-LOCATION = (
-    # ('NULL','NULL')
-    ('CANADA','CANADA'),
-    ('USA','USA'),
-    ('ARCTIC','ARCTIC'),
 
-    )
+
+def locations():
+    inner_list = []
+    outer_list = []
+    
+    
+    response = requests.get('https://restcountries.eu/rest/v2/all?fields=name')
+    locations = response.json()
+
+    
+
+    for location in locations:
+        inner_list.append(location["name"])
+        inner_list.append(f'(location["name"])+")"')
+
+    outer_list.append(tuple(inner_list))
+    return tuple(outer_list)
+
+LOCATION = locations()
+# (
+    
+#     # ('NULL','NULL')
+#     ('CANADA','CANADA'),
+#     ('USA','USA'),
+#     ('ARCTIC','ARCTIC'),
+
+#     )
 
 
 

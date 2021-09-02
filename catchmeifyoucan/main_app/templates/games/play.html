@@ -57,9 +57,9 @@
         buttonLabel = '{{ key }}';
         clueDesc = '{{ value }}';
 
-        console.log('btn label : ',buttonLabel)
-        console.log('clue: ', clueDesc)
-        console.log(i)
+        // console.log('btn label : ',buttonLabel)
+        // console.log('clue: ', clueDesc)
+        // console.log(i)
 
         clueVal.clue = clueDesc;
         clueVal.cost = cost[i];
@@ -69,6 +69,8 @@
         i++;
     </script>
 
+
+
     
 {% endfor %}
 
@@ -76,34 +78,34 @@
 <script>
     const load = () => {
         
-        console.log('hi script is working');
+        // console.log('hi script is working');
         
         const myChoice = document.getElementById('choose');
         const myBankEl = document.getElementById('bank');
         
         let bank = 500;
         
-        console.log('choice is: ', myChoice)
-        console.log('choice is: ', myBankEl)
+        // console.log('choice is: ', myChoice)
+        // console.log('choice is: ', myBankEl)
 
         myChoice.addEventListener('click', mouseEvent => {
             clickedOn = mouseEvent.target.innerText;
 
             clickedOn.innerText = clues[clickedOn].clue
             
-            bank = bank - clues[clickedOn].cost
-
-            console.log(clues)
-
+            // bank = bank - clues[clickedOn].cost
+            
+            // console.log(clues)
+            
             render()
         })
-
-    
+       
+        
         function render() {
             myBankEl.innerText = `${bank}`;
-            console.log(myBankEl)
+            // console.log(myBankEl)
         }
-
+        
     }
 
      
@@ -112,7 +114,27 @@
     
 </script>
 
+<script>
+      let locations = [];
+      let locationIds = [];
+    console.log('{{ locations }}')
+</script>
 
+{% for location in locations %}
+    <script>
+    
+    
+        myLocationName = '{{ location.location_name }}'
+        myLocationId = '{{ location.id }}'
+        
+        
+        locations.push(myLocationName);
+        locationIds.push(myLocationId);
+    
+        console.log('in order where Frank is: ',locations)
+          
+    </script>
+{% endfor %}
 
 <script>
     
@@ -124,17 +146,49 @@
             
             noOfClicks++
             
-            console.log(banks)
-            console.log(mouseEvent.target)
-            console.log(mouseEvent.target.innerText)
+            // console.log(banks)
+            // console.log(mouseEvent.target)
+            // console.log(mouseEvent.target.innerText)
             
             render()
         }
-        
+        </script> 
+         
+         
+         
+         
+         
+         <input id="answer" value="" placeholder="where's Frank ?">
+            <button id="findbtn" >
+            Find Frank !
+        </button>
+<div id="banki">500</div>
+<button id="banking">
+    push to win money lol
+</button>
+
+
+
+
+<script>
+let win = document.getElementById("banking");
+let findbutton = document.getElementById("findbtn")
+let answer = document.getElementById("answer")
+
+
+win.onclick = function winMoney() {
+    document.getElementById("banki").innerText = Number(banki.innerText) + 1};
+
+findbutton.addEventListener("click", function(e){
+    if (answer.value.toUpperCase() == locations[0]) {
+        console.log('winner winner chicken dinner')
+    } else {
+        console.log ('WRONG')
+    }
+    // answer = 
+});
 </script>
 
-<button onclick="deduct()">
-    push to loose money lol
-</button>
+
 
 {% endblock %}

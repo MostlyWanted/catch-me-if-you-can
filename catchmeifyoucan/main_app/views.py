@@ -28,15 +28,24 @@ def play(request, game_id):
     usr_clues['capital'] = clues['capital']
     usr_clues['subregion'] = clues['subregion']
     # usr_clues['language'] = clues['language'][0]
-    usr_clues['borders'] = clues['borders']
+    usr_clues['borders'] = clues['borders'][0]
     # usr_clues['topLevelDomain'] = clues['topLevelDomain'][0]
-    usr_clues['timezones'] = clues['timezones']
+    usr_clues['timezones'] = clues['timezones'][0]
     usr_clues['currencies'] = clues['currencies'][0]['code']
-    usr_clues['callingCodes'] = clues['callingCodes']
+    usr_clues['callingCodes'] = clues['callingCodes'][0]
     usr_clues['population'] = clues['population']
     usr_clues['area'] = clues['area']
     
     return render(request, 'games/play.html', {'game': game, 'locations': locations, 'clues': usr_clues})
+
+
+
+        
+
+
+
+
+
 
 class GameCreate(CreateView):
     model = Game
