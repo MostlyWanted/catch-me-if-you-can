@@ -7,7 +7,7 @@ import requests
 # Create your models here.
 
 
-def locations():
+def locations(populate):
     
     outer_list = []
     
@@ -16,6 +16,43 @@ def locations():
     locations = response.json()
 
     
+
+    if populate == 'populate':
+        populate_list = []
+
+
+        for location in locations:
+            populate_list.append(location['name'])
+            
+
+            
+
+        for country in populate_list:
+            r = requests.get(f'https://restcountries.eu/rest/v2/name/{country}?fullText=true')
+
+            clues = r.json()
+            clues = clues[0]
+            
+            location = Location(location_name=country, map_cord_X=0, map_cord_Y=0)
+
+            location.save()
+
+            location.clue_set.create(clue_name='capital', desc=clues['capital'])
+            location.clue_set.create(clue_name='subregion', desc=clues['subregion'])
+            location.clue_set.create(clue_name='borders', desc=clues['borders'][0])
+            location.clue_set.create(clue_name='timezones', desc=clues['timezones'][0])
+            location.clue_set.create(clue_name='currencies', desc=clues['currencies'][0]['code'])
+            location.clue_set.create(clue_name='callingCodes', desc=clues['callingCodes'][0])
+            location.clue_set.create(clue_name='population', desc=clues['population'])
+            location.clue_set.create(clue_name='area', desc=clues['area'])
+            
+
+        return 0
+
+
+
+
+
     # Creating a tuple of two tuples from the response for the db
     for location in locations:
         inner_list = []
@@ -28,7 +65,7 @@ def locations():
     
     return tuple(outer_list)
 
-LOCATION = locations()
+LOCATION = locations(0)
 # LOCATION = (
     
     # ('NULL','NULL')
@@ -46,9 +83,8 @@ class Location(models.Model):
         choices = LOCATION,  
         max_length=200
     )
-    clues = models.CharField(max_length=500)
-    map_Cord_X = models.FloatField()
-    map_Cord_Y = models.FloatField()
+    map_cord_X = models.FloatField()
+    map_cord_Y = models.FloatField()
 
     
 class Clue(models.Model):
