@@ -18,8 +18,7 @@
     num of levels:{{ game.number_of_lvls }}
 </h2>
 
-{{ locations }}
-{{ game.locations.all }}
+
 
 <h3> all the locations:
     
@@ -190,7 +189,7 @@ win.onclick = function winMoney() {
     document.getElementById("banki").innerText = Number(banki.innerText) + 1};
 
 findbutton.addEventListener("click", function(e){
-    if (answer.value.toUpperCase() == locations[0]) {
+    if (answer.value.toUpperCase() == locations[0].toUpperCase()) {
         console.log('winner winner chicken dinner')
     } else {
         console.log ('WRONG')
