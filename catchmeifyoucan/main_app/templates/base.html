@@ -1,26 +1,35 @@
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Catch me if you can</title>
-</head>
-<body>
-    <h1>Catch me if you can</h1>
-    <ul class="right">
-        {% if user.is_authenticated %}
-        <li><a href="{% url 'logout' %}">Log Out</a></li> 
-        <li><a href="{% url 'games_create' %}">Create a Game</a></li> 
-        <li><a href="{% url 'index' %}">Go back to All Games</a></li> 
-        
+    <link rel="stylesheet" href="{% static 'main_app/css/style.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@200&family=Kaisei+Tokumin:wght@700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <h1>Catch me if you can</h1>
+      {% if user.is_authenticated %}
+      </header>
+      <nav style="max-width: 50%; height: 5vh; align-items: center;">
+        <a href="{% url 'logout' %}">Log Out</a>
+        <a href="{% url 'games_create' %}">Create Game</a>
+        <a href="{% url 'index' %}">All Games</a>
+        </nav>
         {% else %}
-          <li><a href="{% url 'login' %}">Log In</a></li>
-          <li><a href="{% url 'signup' %}">Sign Up</a></li>
+       <nav>  <a href="{% url 'login' %}">Sign In</a>
+        <a href="{% url 'signup' %}" id="signup">Sign Up</a>
         {% endif %}
-    </ul>
-    {%block content%}
-    {%endblock%}
-</body>
+      </nav>
+    </header>
+    <main>{%block content%} {%endblock%}</main>
+  </body>
 </html>

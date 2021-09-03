@@ -1,0 +1,104 @@
+* {
+  --bgnd-dk-mtch: rgb(7, 10, 22);
+  --acc-prp-500: darkviolet;
+  --acc-prp-300: rgb(83, 6, 116);
+  --clr-wht-500: rgb(226, 224, 224);
+}
+
+html {
+  background-color: var(--bgnd-dk-mtch);
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  font-family: "Azeret Mono", monospace;
+}
+
+header,
+nav {
+  display: flex;
+  height: 22%;
+  justify-content: space-between;
+  width: 100%;
+  align-items: baseline;
+}
+
+header * {
+  color: var(--clr-wht-500);
+}
+
+header h1 {
+  font-family: "Kaisei Tokumin", serif;
+  padding: 0 1em;
+}
+
+nav {
+  width: 30%;
+  justify-content: space-around;
+  padding: 1em;
+}
+
+nav a {
+  margin: 0.5em 1em;
+  padding: 0.4em 1em;
+}
+
+#signup {
+  border: 1px solid var(--acc-prp-500);
+  border-radius: 0.75em;
+}
+
+nav a:hover {
+  text-decoration: none;
+  background-color: var(--acc-prp-300);
+  color: var(--clr-wht-500);
+  border: 1px solid var(--acc-prp-500);
+  border-radius: 0.75em;
+}
+
+#signup:hover {
+  text-decoration: none;
+  background-color: var(--acc-prp-500);
+  color: var(--clr-wht-500);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 78vh;
+}
+
+iframe {
+  height: 55vh;
+}
+
+.cesium-credit-text {
+  color: var(--acc-prp-300);
+}
+
+form {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+form input {
+  background-color: var(--bgnd-dk-mtch);
+  border: 1px solid var(--acc-prp-500);
+  padding: 0.5em 1em;
+  color: var(--clr-wht-500);
+  /* border-radius: 1em; */
+  font-family: "Azeret Mono", monospace;
+}
+
+#inp-btn {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1em;
+  justify-content: flex-end;
+}

@@ -1,17 +1,24 @@
-{%extends "base.html"%}
+{%extends "base.html"%} {%block content%}
 
-{%block content%}
+<content
+  ><iframe
+    src="/"
+    width="100%"
+    height="70%"
+    name="view"
+    id="view"
+    frameborder="0"
+  ></iframe
+></content>
 
 {% for game in games %}
 
-    <a href="{% url 'game_details' game.id %}">
-      <div class="card-content">
-        <span class="card-title">{{ game.name }}</span>
-        <p>Hardness (num of levels): {{game.number_of_lvls}}</p>
-        <!-- <p>Description: {{ game.description }}</p> -->
-      </div>
-    </a>
+<a href="{% url 'game_details' game.id %}">
+  <div class="card-content">
+    <span class="card-title">{{ game.name }}</span>
+    <p>Hardness (num of levels): {{game.number_of_lvls}}</p>
+    <!-- <p>Description: {{ game.description }}</p> -->
+  </div>
+</a>
 
-{% endfor %}
-
-{%endblock%}
+{% endfor %} {%endblock%}

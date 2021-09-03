@@ -24,15 +24,15 @@ def locations():
     outer_list.append(tuple(inner_list))
     return tuple(outer_list)
 
-LOCATION = locations()
-# (
-    
-#     # ('NULL','NULL')
-#     ('CANADA','CANADA'),
-#     ('USA','USA'),
-#     ('ARCTIC','ARCTIC'),
-
-#     )
+# LOCATION = locations()
+LOCATION = (
+    # 
+    # ('NULL','NULL')
+    ('CANADA','CANADA'),
+    ('USA','USA'),
+    ('ARCTIC','ARCTIC'),
+# 
+    )
 
 
 

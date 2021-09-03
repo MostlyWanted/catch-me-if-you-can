@@ -7,9 +7,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Game, Location
 from .forms import LocationForm
+from django.views.decorators.clickjacking import xframe_options_sameorigin
+
+
 import requests
 
-
+@xframe_options_sameorigin
 def home(request):
     return render(request ,'maps.html')
 
