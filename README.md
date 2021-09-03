@@ -21,3 +21,4 @@ Our Kanban, and design documentation featuring wireframes and an ERD are hosted 
 
 - [ ] Implement hints
 - [ ] Google OAuth
+- [ ] Utilize Globe and coordinates to allow user interaction for locating Frank
