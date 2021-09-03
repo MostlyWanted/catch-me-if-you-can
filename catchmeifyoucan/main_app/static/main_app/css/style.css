@@ -8,11 +8,11 @@
 html {
   background-color: var(--bgnd-dk-mtch);
 }
-
+/* 
 button {
   background-color: var(--bgnd-dk-mtch);
   color: rgb(0, 78, 83);
-}
+} */
 
 body {
   margin: 0;
@@ -49,15 +49,13 @@ nav {
   padding: 1em;
 }
 
-nav a,
-button {
+nav a {
   color: rgb(0, 78, 83);
   margin: 0.5em 1em;
   padding: 0.4em 1em;
 }
 
-#signup,
-button {
+#signup {
   border: 1px solid var(--acc-prp-500);
   border-radius: 0.75em;
 }
@@ -112,4 +110,49 @@ form input {
   flex-direction: column;
   padding: 0 1em;
   justify-content: flex-end;
+}
+
+/* cool button */
+
+button {
+  margin: 20px;
+}
+button {
+  padding: 10px 25px;
+  font-family: "Special Elite", cursive;
+  background: transparent;
+  outline: none !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+button {
+  border: none;
+  border-bottom: 2px solid #000;
+  border-left: 2px solid #000;
+}
+button:before,
+button:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  top: 0;
+  background: #000;
+  transition: all 0.3s ease;
+}
+button:before {
+  height: 0%;
+  width: 2px;
+}
+button:after {
+  width: 0%;
+  height: 2px;
+}
+button:hover:before {
+  height: 100%;
+}
+button:hover:after {
+  width: 100%;
 }

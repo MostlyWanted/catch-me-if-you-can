@@ -25,13 +25,13 @@
       {% if user.is_authenticated %}
       </header>
       <nav style="max-width: 50%; height: 5vh; align-items: center;">
-        <a href="{% url 'logout' %}">Log Out</a>
-        <a href="{% url 'games_create' %}">Create Game</a>
-        <a href="{% url 'index' %}">All Games</a>
+        <button><a href="{% url 'logout' %}">Log Out</a></button>
+        <button><a href="{% url 'games_create' %}">Create Game</a></button>
+        <button><a href="{% url 'index' %}">All Games</a></button>
         </nav>
         {% else %}
-       <nav>  <a href="{% url 'login' %}">Sign In</a>
-        <a href="{% url 'signup' %}" id="signup">Sign Up</a>
+       <nav>  <button><a href="{% url 'login' %}">Sign In</a></button>
+        <button><a href="{% url 'signup' %}" id="signup">Sign Up</a></button>
         {% endif %}
       </nav>
     </header>
