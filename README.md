@@ -4,10 +4,11 @@ Welcome to Catch me if you can. This application challenges you to find Frank an
 
 ## Screenshots
 ![screenshot](./catchmeifyoucan/images/login-catch.png "Login Page very cool")
+## Login Page
 
 
 ![screenshot](./catchmeifyoucan/images/catch.png)
-
+## Game Details Page
 ## Technologies Used:
 
 This project utilizes a Django server which communicates with the REST countries API and interacts with a PostgreSQL database to serve information to and challenge the user during their game.  The game uses HTML, CSS, and JS to immerse the user, along with the WebGLEarth API.  This code uses Fancy Buttons with Amazing Hover Effects by Ahmed Beheiry hosted on CodePen.io.
