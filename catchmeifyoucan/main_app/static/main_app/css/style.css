@@ -1,12 +1,17 @@
 * {
-  --bgnd-dk-mtch: rgb(7, 10, 22);
-  --acc-prp-500: darkviolet;
-  --acc-prp-300: rgb(83, 6, 116);
+  --bgnd-dk-mtch: rgb(177, 171, 138);
+  --acc-prp-500: rgba(109, 80, 80, 0.438);
+  --acc-prp-300: rgba(77, 110, 24, 0.411);
   --clr-wht-500: rgb(226, 224, 224);
 }
 
 html {
   background-color: var(--bgnd-dk-mtch);
+}
+
+button {
+  background-color: blueviolet;
+  color: rgb(12, 238, 200);
 }
 
 body {
@@ -29,10 +34,12 @@ nav {
 
 header * {
   color: var(--clr-wht-500);
+  font-family: "Special Elite", cursive;
 }
 
 header h1 {
-  font-family: "Kaisei Tokumin", serif;
+  font-family: "Special Elite", cursive;
+  font-size: 85px;
   padding: 0 1em;
 }
 

@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <a href="./games/">Go to games</a>
+    <!-- <a href="./games/"><h1>
+      <button style="display:flex; justify-self: center;" >
+        WELCOME TO CATCH ME IF YOU CAN 
+      </button></h1>
+       -->
     <meta name="robots" content="index, all" />
     <script src="http://www.webglearth.com/v2/api.js"></script>
     <title>WebGL Earth API - Advanced API demo</title>
@@ -9,6 +13,11 @@
       .cesium-credit-text {
         color: var(--acc-prp-300);
       }
+
+img {
+  opacity: 0.5;
+  object-fit: fill;
+}
     </style>
     <script>
       var map;
@@ -206,10 +215,12 @@
     </style>
   </head>
   <body onload="init()">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Austrian_Airlines_air_ticket_cover.jpg/1280px-Austrian_Airlines_air_ticket_cover.jpg">
+
     <div id="map"></div>
     <div id="coords"></div>
     <div id="buttons">
-      <input
+      <!-- <input
         type="button"
         value="Zoom to level 9"
         onclick="setZoom(15);"
@@ -254,8 +265,9 @@
         min="0"
         max="1"
         step="0.01"
-        value="0.7"
-      />1<br />
+        value="0.7" 
+        />1<br />
+      -->
     </div>
   </body>
 </html>
