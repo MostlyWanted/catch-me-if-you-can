@@ -50,6 +50,21 @@ class Location(models.Model):
     map_Cord_X = models.FloatField()
     map_Cord_Y = models.FloatField()
 
+    
+class Clue(models.Model):
+    clue_name = models.CharField(max_length=200)
+    desc = models.CharField(max_length=200)
+    # capital = models.CharField(max_length=200)
+    # subregion = models.CharField(max_length=200)
+    # borders = models.CharField(max_length=200)
+    # timezones = models.CharField(max_length=200)
+    # currencies = models.CharField(max_length=200)
+    # callingCodes = models.CharField(max_length=200)
+    # population = models.CharField(max_length=200)
+    # area = models.CharField(max_length=200)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE)
+
+
 class Game(models.Model):
     name = models.CharField(max_length=200)
     number_of_lvls = models.IntegerField(default=0)
