@@ -8,7 +8,7 @@ import requests
 
 
 def locations():
-    inner_list = []
+    
     outer_list = []
     
     
@@ -16,23 +16,27 @@ def locations():
     locations = response.json()
 
     
-
+    # Creating a tuple of two tuples from the response for the db
     for location in locations:
-        inner_list.append(location["name"])
-        inner_list.append(f'(location["name"])+")"')
+        inner_list = []
+        inner_tuple = ()
+        inner_list.append(location['name'])
+        inner_list.append(location['name'])
+        inner_tuple = tuple(inner_list)
+        outer_list.append(inner_tuple)
 
-    outer_list.append(tuple(inner_list))
+    
     return tuple(outer_list)
 
-# LOCATION = locations()
-LOCATION = (
-    # 
+LOCATION = locations()
+# LOCATION = (
+    
     # ('NULL','NULL')
-    ('CANADA','CANADA'),
-    ('USA','USA'),
-    ('ARCTIC','ARCTIC'),
-# 
-    )
+    # ('CANADA','CANADA'),
+    # ('USA','USA'),
+    # ('ARCTIC','ARCTIC'),
+
+    # )
 
 
 
