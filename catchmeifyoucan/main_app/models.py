@@ -7,7 +7,7 @@ import requests
 # Create your models here.
 
 
-def locations(pop):
+def locations(populate):
     
     outer_list = []
     
@@ -15,9 +15,20 @@ def locations(pop):
     response = requests.get('https://restcountries.eu/rest/v2/all?fields=name')
     locations = response.json()
 
+    if populate == 'populate':
+        populate_list = []
 
-    if pop == 'populate':
-        pop_list = []
+
+        for location in locations:
+            populate_list.append(location['name'])
+
+        for country in populate_list:
+            location = Location(location_name=country, clues='none', map_Cord_X=0, map_Cord_Y=0)
+
+            location.save()
+
+        return 0
+
 
 
 
@@ -33,10 +44,6 @@ def locations(pop):
 
     
     return tuple(outer_list)
-
-# def populate_locations():
-
-
 
 LOCATION = locations(0)
 # LOCATION = (
@@ -59,6 +66,7 @@ class Location(models.Model):
     clues = models.CharField(max_length=500)
     map_Cord_X = models.FloatField()
     map_Cord_Y = models.FloatField()
+    
 
 class Game(models.Model):
     name = models.CharField(max_length=200)
