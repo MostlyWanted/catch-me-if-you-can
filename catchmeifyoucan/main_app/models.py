@@ -7,7 +7,7 @@ import requests
 # Create your models here.
 
 
-def locations():
+def locations(pop):
     
     outer_list = []
     
@@ -15,7 +15,13 @@ def locations():
     response = requests.get('https://restcountries.eu/rest/v2/all?fields=name')
     locations = response.json()
 
-    
+
+    if pop == 'populate':
+        pop_list = []
+
+
+
+
     # Creating a tuple of two tuples from the response for the db
     for location in locations:
         inner_list = []
@@ -28,7 +34,11 @@ def locations():
     
     return tuple(outer_list)
 
-LOCATION = locations()
+# def populate_locations():
+
+
+
+LOCATION = locations(0)
 # LOCATION = (
     
     # ('NULL','NULL')
