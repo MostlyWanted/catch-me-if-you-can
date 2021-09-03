@@ -23,7 +23,7 @@ Our Kanban, and design documentation featuring wireframes and an ERD are hosted 
 
 [Our Trello](https://trello.com/b/YuWgLGWK/catch-me-if-you-can)
 
-## Next Steps
+## Next Steps (Ice Box)
 
 - [ ] Implement hints
 - [ ] Google OAuth
