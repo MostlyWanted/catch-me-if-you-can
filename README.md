@@ -3,10 +3,10 @@
 Welcome to Catch me if you can. This application challenges you to find Frank and was built for the learning experience.
 
 ## Screenshots
-![screenshot](/images/login-catch.png)
+![screenshot](./catchmeifyoucan/images/login-catch.png)
 
 
-![screenshot](/images/catch.png)
+![screenshot](./catchmeifyoucan/images/catch.png)
 
 ## Technologies Used:
 
